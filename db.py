@@ -5,13 +5,13 @@ import base64
 import psycopg2
 from io import BytesIO
 from psycopg2 import sql
-from dotenv import load\_dotenv
+from dotenv import load_dotenv
 from PyPDF2 import PdfReader
-from langchain\_openai import AzureOpenAIEmbeddings
-from langchain.text\_splitter import RecursiveCharacterTextSplitter
+from langchain_openai import AzureOpenAIEmbeddings
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.schema import Document
 
-load\_dotenv()
+load_dotenv()
 
 # class DBOps:
 
@@ -136,30 +136,29 @@ load\_dotenv()
 # return chunks
 
 class DBOps:
-def **init**(self, base64\_string=None, metadata=None):
-self.base64\_string = base64\_string
-self.metadata = metadata or {}
+    def __init__(self, base64_string=None, metadata=None):
+        self.base64_string = base64_string
+        self.metadata = metadata or {}
 
-```
     # Azure OpenAI Creds
-    self.OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-    self.OPENAI_EMBEDDING_MODEL_NAME = os.getenv("OPENAI_EMBEDDING_MODEL_NAME")
-    self.OPENAI_API_VERSION = os.getenv("OPENAI_API_VERSION")
-    self.AZURE_ENDPOINT = os.getenv("AZURE_ENDPOINT")
-    self.model = "text-embedding-ada-002-vector-creation"
+        self.OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+        self.OPENAI_EMBEDDING_MODEL_NAME = os.getenv("OPENAI_EMBEDDING_MODEL_NAME")
+        self.OPENAI_API_VERSION = os.getenv("OPENAI_API_VERSION")
+        self.AZURE_ENDPOINT = os.getenv("AZURE_ENDPOINT")
+        self.model = "text-embedding-ada-002-vector-creation"
 
-    # PostgreSQL DB Creds
-    self.db_name = os.getenv("DB_NAME")
-    self.user = os.getenv("USER")
-    self.password = os.getenv("PASSWORD")
-    self.host = os.getenv("HOST")
-    self.port = os.getenv("PORT")
+        # PostgreSQL DB Creds
+        self.db_name = os.getenv("DB_NAME")
+        self.user = os.getenv("USER")
+        self.password = os.getenv("PASSWORD")
+        self.host = os.getenv("HOST")
+        self.port = os.getenv("PORT")
 
-def clean_text(self, text: str) -> str:
-    """Remove special characters and extra whitespace."""
-    cleaned = re.sub(r'[^\w\s.]', '', text)
-    cleaned = re.sub(r'\.{2,}', ' ', cleaned)
-    return cleaned.strip()
+    def clean_text(self, text: str) -> str:
+        """Remove special characters and extra whitespace."""
+        cleaned = re.sub(r'[^\w\s.]', '', text)
+        cleaned = re.sub(r'\.{2,}', ' ', cleaned)
+        return cleaned.strip()
 
 # def base64_to_pdf_text(self) -> dict:
 #     """Decode Base64 PDF, extract all pages, stitch them with page markers."""
