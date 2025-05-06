@@ -5,13 +5,13 @@ import base64
 import psycopg2
 from io import BytesIO
 from psycopg2 import sql
-from dotenv import load\_dotenv
+from dotenv import load_dotenv
 from PyPDF2 import PdfReader
-from langchain\_openai import AzureOpenAIEmbeddings
-from langchain.text\_splitter import RecursiveCharacterTextSplitter
+from langchain_openai import AzureOpenAIEmbeddings
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.schema import Document
 
-load\_dotenv()
+load_dotenv()
 
 # class DBOps:
 
